@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package message;
+option go_package = "grpc-api/api/message";
+
+message Message {
+  string id = 1;
+  string content = 2;
+}
+
+message GetMessageByIdRequest {
+  string id = 1;
+}
+
+service MessageService {
+  rpc CreateMessage(Message) returns (Message);
+  rpc UpdateMessage(Message) returns (Message);
+  rpc GetMessageById(GetMessageByIdRequest) returns (Message);
+}
